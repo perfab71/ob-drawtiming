@@ -18,7 +18,7 @@
 ;; Author: Fabien Perez
 ;; Keywords: literate programming, reproducible research
 ;; Homepage: https://github.com/perfab71/ob-drawtiming
-
+;; Version: 2023-02-17
 ;;; Commentary:
 
 ;; Org-Babel support for evaluating drawtiming script.
@@ -42,7 +42,8 @@
 
 (defun org-babel-execute:drawtiming (body params)
   "Execute a block of drawtiming code with org-babel.
-This function is called by `org-babel-execute-src-block'."
+This function is called by `org-babel-execute-src-block'
+which pass BODY and PARAMS."
   (let* ((result-params (split-string (or (cdr (assoc :results params)) "")))
 	 (out-file (or (cdr (assoc :file params))
 		       (error "Drawtiming requires a \":file\" header argument")))
