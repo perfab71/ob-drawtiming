@@ -1,6 +1,14 @@
-;;; ob-drawtiming.el --- org-babel functions for drawtiming evaluation
+;;; ob-drawtiming.el --- Functions for drawtiming evaluation in org-babel
 
 ;; Copyright (C) 2023 Fabien Perez
+
+;; Author: Fabien Perez
+;; Keywords: literate programming, reproducible research
+;; Homepage: https://github.com/perfab71/ob-drawtiming
+;; Version: 2023-02-20
+;; Package-Requires: ((emacs "24.1") (org "8.0"))
+
+;;; License:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -15,13 +23,19 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; Author: Fabien Perez
-;; Keywords: literate programming, reproducible research
-;; Homepage: https://github.com/perfab71/ob-drawtiming
-;; Version: 2023-02-17
 ;;; Commentary:
 
-;; Org-Babel support for evaluating drawtiming script.
+;; org-babel support for evaluating drawtiming script.
+;;
+;; Drawtiming is available and documented at
+;; http://drawtiming.sourceforge.net/index.html
+;;
+;; This differs from most standard languages in that
+;;
+;; 1) there is no such thing as a "session"
+;; 2) we are generally only going to return results of type "file"
+;; 3) we are adding the "file" and "cmdline" header arguments
+;; 4) there are no variables
 
 ;;; Requirements:
 
@@ -54,8 +68,7 @@ which pass BODY and PARAMS."
 		(concat (shell-quote-argument
 			 (expand-file-name org-drawtiming-path))
                         " -o " out-file
-                        " " in-file
-                        ))))
+                        " " in-file))))
     (unless (file-exists-p org-drawtiming-path)
       (error "Could not find drawtiming executable at %s" org-drawtiming-path))
     (with-temp-file in-file (insert body))
