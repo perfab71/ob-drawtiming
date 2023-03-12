@@ -3,9 +3,9 @@
 ;; Copyright (C) 2023 Fabien Perez
 
 ;; Author: Fabien Perez
-;; Keywords: literate programming, reproducible research
+;; Keywords: tools, multimedia
 ;; Homepage: https://github.com/perfab71/ob-drawtiming
-;; Version: 2023-02-20
+;; Version: 2023-03-10
 ;; Package-Requires: ((emacs "24.1") (org "8.0"))
 
 ;;; License:
